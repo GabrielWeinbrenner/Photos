@@ -3,6 +3,10 @@ package com.photos.model;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.photos.constants.constants;
+
+import javafx.scene.image.Image;
+
 public class Album {
     private String albumName;
     private ArrayList<Photo> photos;
@@ -34,6 +38,15 @@ public class Album {
         return this.photos.size();
     }
 
+    public ArrayList<Photo> getPhotos() {
+        return this.photos;
+    }
+    public Image getThumbnail() {
+        if(this.photos.size() <= 0) {
+            return new Image(constants.DEFAULT_IMAGE);
+        }
+        return this.photos.get(0).getImage();
+    } 
     public String getDateRange() {
         if(this.photos.size() <= 0) {
             return "No Date Range";

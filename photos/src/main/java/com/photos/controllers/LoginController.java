@@ -1,7 +1,8 @@
-package com.photos;
+package com.photos.controllers;
 
 import java.io.IOException;
 
+import com.photos.App;
 import com.photos.constants.constants.USER_TYPE;
 import com.photos.model.PhotoManagementSystem;
 import com.photos.model.User;

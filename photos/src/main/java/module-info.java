@@ -3,5 +3,6 @@ module com.photos {
     requires javafx.fxml;
 
     opens com.photos to javafx.fxml;
+    opens com.photos.controllers to javafx.fxml;
     exports com.photos;
 }

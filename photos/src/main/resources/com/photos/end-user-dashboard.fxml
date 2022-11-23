@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="982.0" maxWidth="1512.0" minHeight="982.0" minWidth="1512.0" prefHeight="982.0" prefWidth="1512.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.photos.EndUserDashboardController">
+<VBox maxHeight="982.0" maxWidth="1512.0" minHeight="982.0" minWidth="1512.0" prefHeight="982.0" prefWidth="1512.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.photos.controllers.EndUserDashboardController">
    <children>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
          <children>
