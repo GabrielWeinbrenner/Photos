@@ -35,6 +35,9 @@ public class Album {
     }
 
     public String getDateRange() {
+        if(this.photos.size() <= 0) {
+            return "No Date Range";
+        }
         Date minDate = this.photos.get(0).getDate();
         Date maxDate = this.photos.get(0).getDate();
         for(Photo i : this.photos)  {
