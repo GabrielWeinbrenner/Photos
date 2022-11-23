@@ -1,4 +1,4 @@
-package com.photos.constants;
+package com.photos.shared;
 
 
 public abstract class Controller {

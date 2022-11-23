@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import com.photos.model.PhotoManagementSystem;
 import com.photos.model.EndUser;
 import com.photos.App;
-import com.photos.constants.Thumbnail;
-import com.photos.constants.constants;
+import com.photos.shared.Thumbnail;
+import com.photos.shared.constants;
 import com.photos.model.Album;
 
 import javafx.fxml.FXML;

@@ -1,4 +1,4 @@
-package com.photos.constants;
+package com.photos.shared;
 
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;

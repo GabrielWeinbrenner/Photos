@@ -1,4 +1,4 @@
-package com.photos.constants;
+package com.photos.shared;
 
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;

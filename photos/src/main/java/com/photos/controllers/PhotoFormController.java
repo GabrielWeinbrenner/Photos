@@ -4,26 +4,19 @@ import java.io.File;
 import java.io.IOException;
 
 import com.photos.App;
-import com.photos.constants.Controller;
-import com.photos.constants.CreationEventListener;
-import com.photos.constants.EventObserver;
-import com.photos.constants.EventSubject;
-import com.photos.constants.constants.USER_TYPE;
 import com.photos.model.Album;
 import com.photos.model.Photo;
 import com.photos.model.PhotoManagementSystem;
-import com.photos.model.User;
+import com.photos.shared.Controller;
+import com.photos.shared.CreationEventListener;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 

@@ -1,4 +1,4 @@
-package com.photos.constants;
+package com.photos.shared;
 
 public interface CreationEventListener {
     void onAddPhoto();

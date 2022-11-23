@@ -1,6 +1,6 @@
 package com.photos.model;
 
-import com.photos.constants.constants.USER_TYPE;
+import com.photos.shared.constants.USER_TYPE;
 
 public abstract class User {
     private String username;

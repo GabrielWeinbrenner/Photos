@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.photos.model.PhotoManagementSystem;
+import com.photos.shared.Controller;
+import com.photos.shared.CreationEventListener;
+import com.photos.shared.Thumbnail;
+import com.photos.shared.constants;
 import com.photos.model.EndUser;
 import com.photos.model.Photo;
 import com.photos.App;
-import com.photos.constants.Controller;
-import com.photos.constants.CreationEventListener;
-import com.photos.constants.Thumbnail;
-import com.photos.constants.constants;
 import com.photos.model.Album;
 
 import javafx.event.EventHandler;

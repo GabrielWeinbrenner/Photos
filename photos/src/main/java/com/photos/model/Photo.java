@@ -3,7 +3,7 @@ package com.photos.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.photos.constants.constants;
+import com.photos.shared.constants;
 
 import javafx.scene.image.Image;
 

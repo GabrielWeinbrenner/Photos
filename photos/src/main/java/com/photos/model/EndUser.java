@@ -2,7 +2,7 @@ package com.photos.model;
 
 import java.util.ArrayList;
 
-import com.photos.constants.constants.USER_TYPE;
+import com.photos.shared.constants.USER_TYPE;
 
 public class EndUser extends User{
     private ArrayList<Album> albums;

@@ -11,8 +11,8 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.photos.constants.Controller;
-import com.photos.constants.constants;
+import com.photos.shared.Controller;
+import com.photos.shared.constants;
 
 /**
  * JavaFX App
