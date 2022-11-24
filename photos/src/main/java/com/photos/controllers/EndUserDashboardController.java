@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.photos.model.PhotoManagementSystem;
 import com.photos.model.EndUser;
 import com.photos.App;
+import com.photos.shared.CreationEventListener;
 import com.photos.shared.Thumbnail;
 import com.photos.shared.constants;
 import com.photos.model.Album;
@@ -19,10 +20,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
-public class EndUserDashboardController {
+public class EndUserDashboardController implements CreationEventListener{
     PhotoManagementSystem ps = new PhotoManagementSystem();
     PhotoManagementSystem PSInstance = PhotoManagementSystem.instance;
     EndUser currentUser = (EndUser) PSInstance.getCurrentUser();
+    ArrayList<Album> albums = currentUser.getAlbums();
 
     final int COLUMNS = 3;
     @FXML
@@ -38,7 +40,7 @@ public class EndUserDashboardController {
 
     @FXML
     public void initialize() {
-        setGrid(currentUser.getAlbums());
+        setGrid(albums);
     }
 
     private void setGrid(ArrayList<Album> albums) {
@@ -79,10 +81,13 @@ public class EndUserDashboardController {
 
     @FXML
     private void createAlbumAction() throws IOException {
-
-        currentUser.createAlbum("Summer Days on Beach");
-        ArrayList<Album> albums = currentUser.getAlbums();
-        setGrid(albums);
+        AlbumFormController afc = new AlbumFormController();
+        afc.setAddAlbum(this);
+        try {
+            App.setPopup("album-form", afc, currentUser, 320);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -95,7 +100,15 @@ public class EndUserDashboardController {
             errorAlert.setHeaderText("Error In Logging Out");
             errorAlert.setContentText(e.getMessage());
             errorAlert.showAndWait();
-
         }
     }
+
+    @Override
+    public void onMagicAlbum() {
+        ArrayList<Album> albums = currentUser.getAlbums();
+        setGrid(albums);
+    }
+
+    @Override
+    public void onAddPhoto() {}
 }

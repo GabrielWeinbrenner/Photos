@@ -1,5 +1,6 @@
 package com.photos.model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -48,9 +49,13 @@ public class Photo {
     public Image getImage() {
         return this.image;
     }
-    public Date getDate() {
 
+    public Date getDate() {
         return this.dateCreated;
     }
 
+    public String getStringDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(constants.DEFAULT_DATE_FORMAT);
+        return dateFormat.format(this.dateCreated);
+    }
 }

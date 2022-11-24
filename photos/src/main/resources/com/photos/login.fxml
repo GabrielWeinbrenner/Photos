@@ -40,19 +40,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="982.0" maxWidth="1512.0" minHeight="982.0" minWidth="1512.0" prefHeight="982.0" prefWidth="1512.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.photos.controllers.LoginController">
+<VBox maxHeight="682.0" maxWidth="1212.0" minHeight="682.0" minWidth="1212.0" prefHeight="682.0" prefWidth="1212.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.photos.controllers.LoginController">
   <children>
     <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f9f9f9" height="512.0" layoutX="408.0" layoutY="244.0" stroke="BLACK" strokeType="INSIDE" width="700.0" />
-            <Text layoutX="550.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To Photos">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f9f9f9" height="512.0" layoutX="260.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" width="700.0" />
+            <Text layoutX="402.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To Photos">
                <font>
                   <Font name="Futura Medium" size="36.0" />
                </font>
             </Text>
-            <TextField fx:id="usernameInput" layoutX="550.0" layoutY="444.0" prefHeight="47.0" prefWidth="406.0" promptText="Username" />
-            <TextField fx:id="passwordInput" layoutX="550.0" layoutY="506.0" prefHeight="47.0" prefWidth="406.0" promptText="Password" />
-            <Button fx:id="signInButton" layoutX="550.0" layoutY="569.0" mnemonicParsing="false" onAction="#signInAction" prefHeight="47.0" prefWidth="406.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura;" text="Sign In" />
+            <TextField fx:id="usernameInput" layoutX="402.0" layoutY="290.0" prefHeight="47.0" prefWidth="406.0" promptText="Username" />
+            <TextField fx:id="passwordInput" layoutX="402.0" layoutY="352.0" prefHeight="47.0" prefWidth="406.0" promptText="Password" />
+            <Button fx:id="signInButton" layoutX="402.0" layoutY="415.0" mnemonicParsing="false" onAction="#signInAction" prefHeight="47.0" prefWidth="406.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura;" text="Sign In" />
          </children>
     </AnchorPane>
   </children>

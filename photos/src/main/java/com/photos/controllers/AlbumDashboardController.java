@@ -1,6 +1,8 @@
 package com.photos.controllers;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import com.photos.model.PhotoManagementSystem;
@@ -13,14 +15,10 @@ import com.photos.model.Photo;
 import com.photos.App;
 import com.photos.model.Album;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
@@ -65,7 +63,8 @@ public class AlbumDashboardController extends Controller implements CreationEven
             if (i % COLUMNS == 0) {
                 j += 1;
             }
-            Thumbnail photoThumbnail = new Thumbnail(325, 325, "", "", photo.getDate().toString(), photo.getImage());
+            // String photoDate = LocalDateTime.parse(photo.getDate().toString(), DateTimeFormatter.ofPattern("MM-yyyy")).toString();
+            Thumbnail photoThumbnail = new Thumbnail(325, 325, "", "", photo.getStringDate(), photo.getImage());
             StackPane photoStack = photoThumbnail.getThumbnail();
             constants.setHoverComponent(photoStack);
             GridPane.setConstraints(photoStack, i % COLUMNS, j);
@@ -76,8 +75,15 @@ public class AlbumDashboardController extends Controller implements CreationEven
     }
 
     @FXML
-    private void renameAlbumAction() throws IOException {
+    private void backAction() throws IOException {
+        App.setRoot("end-user-dashboard");
+    }
 
+    @FXML
+    private void renameAlbumAction() throws IOException {
+        AlbumFormController afc = new AlbumFormController();
+        afc.setAddAlbum(this);
+        App.setPopup("album-form", afc, currentAlbum, 320);
     }
 
     @FXML
@@ -91,5 +97,10 @@ public class AlbumDashboardController extends Controller implements CreationEven
     public void onAddPhoto() {
         ArrayList<Photo> photos = currentAlbum.getPhotos();
         setGrid(photos);
+    }
+
+    @Override
+    public void onMagicAlbum() {
+        albumName.setText(currentAlbum.getAlbumName());
     }
 }

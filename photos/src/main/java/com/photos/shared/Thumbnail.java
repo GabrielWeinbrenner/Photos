@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -25,16 +26,29 @@ public class Thumbnail {
         VBox vbox = new VBox(headerText, subheaderText);
         headerText.setTextAlignment(TextAlignment.CENTER);
         subheaderText.setTextAlignment(TextAlignment.CENTER);
+        subtitleText.setTextAlignment(TextAlignment.CENTER);
+
+        headerText.setFill(Color.WHITE);
+        headerText.setStrokeWidth(2);
+        headerText.setStroke(Color.BLACK);
+
+        subheaderText.setFill(Color.WHITE);
+        subheaderText.setStrokeWidth(1.1);
+        subheaderText.setStroke(Color.BLACK);
+        subtitleText.setFill(Color.WHITE);
+        subtitleText.setStrokeWidth(1.1);
+        subtitleText.setStroke(Color.BLACK);
 
         headerText.setWrappingWidth(325); 
         subheaderText.setWrappingWidth(325);
+        subtitleText.setWrappingWidth(325);
 
-        headerText.setFont(Font.font("Futura", FontWeight.BOLD, FontPosture.REGULAR, 45)); 
-        subheaderText.setFont(Font.font("Futura", FontWeight.NORMAL, FontPosture.REGULAR, 20)); 
-        subtitleText.setFont(Font.font("Futura", FontWeight.NORMAL, FontPosture.REGULAR, 20)); 
+        headerText.setFont(Font.font("Futura", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 45)); 
+        subheaderText.setFont(Font.font("Futura", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 25)); 
+        subtitleText.setFont(Font.font("Futura", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 25)); 
 
         headerText.setTranslateY(20);
-        subheaderText.setTranslateY(10);
+        subheaderText.setTranslateY(5);
         subtitleText.setTranslateY(-20);
 
         stack.getChildren().addAll(background, vbox, subtitleText);

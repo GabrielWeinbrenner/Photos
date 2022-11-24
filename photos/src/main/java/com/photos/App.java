@@ -7,9 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.photos.shared.Controller;
 import com.photos.shared.constants;
@@ -48,7 +45,14 @@ public class App extends Application {
         popupStage.setScene(popup);
         popup.setRoot(loadFXML(fxml,controller));
         popupStage.show();
+        popupStage.setHeight(constants.FORM_HEIGHT);
     }
+
+    public static void setPopup(String fxml, Controller controller, Object obj, int height) throws IOException {
+        setPopup(fxml, controller, obj);
+        popupStage.setHeight(height);
+    }
+
     public static void closePopup() {
         popupStage.close();
     }
@@ -63,11 +67,8 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-
     public static void main(String[] args) {
         launch();
     }
-
-
 
 }

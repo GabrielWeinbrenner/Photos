@@ -9,16 +9,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxHeight="900.0" maxWidth="500.0" minHeight="900.0" minWidth="500.0" prefHeight="900.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="800.0" maxWidth="500.0" minHeight="800.0" minWidth="500.0" prefHeight="800.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="addButton" layoutX="57.0" layoutY="809.0" mnemonicParsing="false" onAction="#addPhotoAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura;" text="Add">
+            <Button fx:id="addButton" layoutX="57.0" layoutY="727.0" mnemonicParsing="false" onAction="#addPhotoAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura;" text="Add">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="cancelButton" layoutX="262.0" layoutY="809.0" mnemonicParsing="false" onAction="#cancelCreatePhotoAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura;" text="Cancel">
+            <Button fx:id="cancelButton" layoutX="262.0" layoutY="727.0" mnemonicParsing="false" onAction="#cancelCreatePhotoAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura;" text="Cancel">
                <font>
                   <Font size="20.0" />
                </font>

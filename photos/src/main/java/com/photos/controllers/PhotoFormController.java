@@ -6,7 +6,6 @@ import java.io.IOException;
 import com.photos.App;
 import com.photos.model.Album;
 import com.photos.model.Photo;
-import com.photos.model.PhotoManagementSystem;
 import com.photos.shared.Controller;
 import com.photos.shared.CreationEventListener;
 
@@ -21,14 +20,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class PhotoFormController extends Controller {
-    PhotoManagementSystem ps = new PhotoManagementSystem();
-    PhotoManagementSystem PSInstance = PhotoManagementSystem.instance;
-
     private CreationEventListener listener;
 
-    public void setAddPhoto(CreationEventListener listener) {
-        this.listener = listener;
-    }
     Album currentAlbum;
     @FXML
     Button addButton;
@@ -43,17 +36,27 @@ public class PhotoFormController extends Controller {
 
     Image image;
 
+    public void setAddPhoto(CreationEventListener listener) {
+        this.listener = listener;
+    }
+
     @Override
     public void setData(Object obj) {
         this.currentAlbum = (Album) obj;
     }
 
     @FXML
-    private void addPhotoAction() throws IOException {
-        Photo newPhoto = new Photo(captionArea.getText(), this.image);
-        currentAlbum.addPhoto(newPhoto);
-        listener.onAddPhoto(); 
-        App.closePopup();
+    private void addPhotoAction() throws Exception {
+        Alert errorAlert = new Alert(AlertType.ERROR);
+        if(this.image == null) {
+            errorAlert.setHeaderText("No Photo Provided");
+            errorAlert.showAndWait();        
+        } else {
+            Photo newPhoto = new Photo(captionArea.getText(), this.image);
+            currentAlbum.addPhoto(newPhoto);
+            listener.onAddPhoto(); 
+            App.closePopup();
+        }
     }
 
     @FXML
@@ -70,7 +73,7 @@ public class PhotoFormController extends Controller {
             fileChooser.getExtensionFilters().addAll(
                     new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
             File selectedFile = fileChooser.showOpenDialog(App.popupStage);
-            this.image = new Image(selectedFile.toURI().toString());
+            this.image = new Image(selectedFile.toURI().toString(), 325, 325, false, true);
             photoPreviewer.setImage(this.image);
         } catch (Exception e) {
             errorAlert.setHeaderText("Error in uploading file");

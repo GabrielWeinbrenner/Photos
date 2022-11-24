@@ -1,5 +1,6 @@
 package com.photos.model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -41,12 +42,14 @@ public class Album {
     public ArrayList<Photo> getPhotos() {
         return this.photos;
     }
+
     public Image getThumbnail() {
         if(this.photos.size() <= 0) {
             return new Image(constants.DEFAULT_IMAGE);
         }
         return this.photos.get(0).getImage();
     } 
+
     public String getDateRange() {
         if(this.photos.size() <= 0) {
             return "No Date Range";
@@ -62,7 +65,14 @@ public class Album {
                 minDate = currPhotoDate;
             }
         }
-        return minDate.toString() + " - " + maxDate.toString();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat(constants.DEFAULT_DATE_FORMAT);
+        String minDateString = dateFormat.format(minDate);
+        String maxDateString = dateFormat.format(maxDate);
+        if ( minDateString.equals(maxDateString)) {
+            return minDateString;
+        }
+        return minDateString + " - " + maxDateString ;
     }
 
 }

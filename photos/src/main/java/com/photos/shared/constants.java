@@ -6,11 +6,12 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 
 public final class constants {
-    public static final int WIDTH = 1512;
-    public static final int HEIGHT = 982;
+    public static final int WIDTH = 1212;
+    public static final int HEIGHT = 682;
     public static final int FORM_HEIGHT = 900;
     public static final int FORM_WIDTH = 500;
     public static final String DEFAULT_IMAGE = "file:images/default.jpg";
+    public static final String DEFAULT_DATE_FORMAT = "MMM d, yyyy";
     public static enum USER_TYPE {
         EndUser,
         Admin,
