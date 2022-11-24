@@ -10,16 +10,16 @@
    <children>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="682.0" prefWidth="1212.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="logoutButton" layoutX="885.0" layoutY="592.0" mnemonicParsing="false" onAction="#logOutAction" prefHeight="47.0" prefWidth="269.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura;" text="Logout">
+            <Button fx:id="logoutButton" layoutX="885.0" layoutY="592.0" mnemonicParsing="false" onAction="#logOutAction" prefHeight="47.0" prefWidth="269.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Logout">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="createButton" layoutX="23.0" layoutY="584.0" mnemonicParsing="false" onAction="#createAlbumAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura;" text="Create">
+            <Button fx:id="createButton" layoutX="23.0" layoutY="584.0" mnemonicParsing="false" onAction="#createAlbumAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Create">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="searchButton" layoutX="252.0" layoutY="584.0" mnemonicParsing="false" onAction="#searchAlbumAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura;" text="Search">
+            <Button fx:id="searchButton" layoutX="252.0" layoutY="584.0" mnemonicParsing="false" onAction="#searchAlbumAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Search">
                <font>
                   <Font size="20.0" />
                </font>
