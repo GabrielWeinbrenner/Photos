@@ -16,7 +16,7 @@ import com.photos.shared.constants;
  */
 public class App extends Application {
 
-    private static Scene scene;
+    public static Scene scene;
     private static Scene popup;
     public static Stage popupStage;
 
@@ -32,13 +32,13 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-    public static void setRoot(String fxml, Controller controller, Object obj) throws IOException {
-        controller.setData(obj);
+    public static void setRoot(String fxml, Controller controller, Object... arg0) throws IOException {
+        controller.setData(arg0);
         scene.setRoot(loadFXML(fxml, controller));
     }
 
-    public static void setPopup(String fxml, Controller controller, Object obj) throws IOException {
-        controller.setData(obj);
+    public static void setPopup(String fxml, Controller controller, Object... arg0) throws IOException {
+        controller.setData(arg0);
         if(popupStage == null) {
             popupStage = new Stage();
         }
@@ -56,6 +56,7 @@ public class App extends Application {
     public static void closePopup() {
         popupStage.close();
     }
+
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();

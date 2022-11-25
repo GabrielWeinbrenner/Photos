@@ -14,12 +14,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.text.Text;
 public class AlbumFormController extends Controller {
-    PhotoManagementSystem ps = new PhotoManagementSystem();
-    PhotoManagementSystem PSInstance = PhotoManagementSystem.instance;
+
     private enum STATE {
         RENAME, 
         CREATE
-    };
+    }
+    PhotoManagementSystem ps = new PhotoManagementSystem();
+    PhotoManagementSystem PSInstance = PhotoManagementSystem.instance;;
     private CreationEventListener listener;
     private Album currAlbum;
     private STATE state;
@@ -31,6 +32,23 @@ public class AlbumFormController extends Controller {
     @FXML
     Text formTitle;
 
+    @Override
+    public void setData(Object... obj) {
+        for(int i = 0; i < obj.length; i++){
+            if("Album".equals(obj[i].getClass().getSimpleName())) {
+                state = STATE.RENAME;
+                this.currAlbum = (Album) obj[i];
+            } else {
+                state = STATE.CREATE;
+            }
+
+        }
+    }
+
+    public void setAddAlbum(CreationEventListener listener) {
+        this.listener = listener;
+    }
+
     @FXML 
     private void initialize() {
         if(state == STATE.RENAME) {
@@ -38,19 +56,6 @@ public class AlbumFormController extends Controller {
             addButton.setText("Rename");
             formTitle.setText("Rename Album");
         }
-    }
-
-    @Override
-    public void setData(Object obj) {
-        String asdf = obj.getClass().getSimpleName();
-        if(asdf.equals("Album")) {
-            state = STATE.RENAME;
-            this.currAlbum = (Album) obj;
-        }
-    }
-
-    public void setAddAlbum(CreationEventListener listener) {
-        this.listener = listener;
     }
     @FXML 
     private void cancelAddAlbumAction() {

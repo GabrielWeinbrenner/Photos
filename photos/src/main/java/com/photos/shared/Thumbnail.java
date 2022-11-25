@@ -1,7 +1,12 @@
 package com.photos.shared;
 
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -58,6 +63,26 @@ public class Thumbnail {
         StackPane.setAlignment(subtitleText, Pos.BOTTOM_CENTER);
 
         thumbnail = stack;
+    }
+
+    public StackPane setButton(String text, EventHandler<MouseEvent> event) {
+        Button delete = new Button("Delete");
+        thumbnail.getChildren().add(delete);
+        delete.setOnMouseClicked(event);  
+        StackPane.setAlignment(delete, Pos.BOTTOM_RIGHT);
+        return thumbnail;
+    }
+
+    public StackPane removeButtons() {
+        ObservableList<Node> children = thumbnail.getChildren();
+
+        for(int i = 0; i < children.size(); i++){
+            Object currChild = children.get(i);
+            if(currChild.getClass().getSimpleName().equals("Button")){
+                children.remove(children.get(i));
+            }
+        }
+        return thumbnail;
     }
 
     public StackPane getThumbnail(){

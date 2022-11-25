@@ -72,7 +72,6 @@ public class EndUserDashboardController implements CreationEventListener{
             this.gridPane.getChildren().add(albumStack);
         }
         albumScroll.setContent(gridPane);
-
     }
 
     @FXML
@@ -110,5 +109,5 @@ public class EndUserDashboardController implements CreationEventListener{
     }
 
     @Override
-    public void onAddPhoto() {}
+    public void onMagicPhoto() {}
 }

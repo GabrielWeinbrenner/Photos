@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
@@ -23,12 +24,12 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="uploadPhotoButton" layoutX="29.0" layoutY="240.0" maxHeight="40.0" maxWidth="184.0" minHeight="40.0" minWidth="184.0" mnemonicParsing="false" onAction="#uploadPhotoAction" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Upload Photo">
+            <Button fx:id="uploadPhotoButton" layoutX="30.0" layoutY="255.0" maxHeight="40.0" maxWidth="184.0" minHeight="40.0" minWidth="184.0" mnemonicParsing="false" onAction="#uploadPhotoAction" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Upload Photo">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <TextArea fx:id="captionArea" layoutX="29.0" layoutY="119.0" maxHeight="100.0" maxWidth="445.0" minHeight="100.0" minWidth="445.0" prefHeight="100.0" prefWidth="445.0" />
+            <TextArea fx:id="captionArea" layoutX="31.0" layoutY="119.0" maxHeight="100.0" maxWidth="445.0" minHeight="75.0" minWidth="445.0" prefHeight="75.0" prefWidth="445.0" />
             <Text layoutX="29.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD PHOTO">
                <font>
                   <Font name="Futura Medium" size="34.0" />
@@ -40,6 +41,12 @@
                </font>
             </Label>
             <ImageView fx:id="photoPreviewer" fitHeight="392.0" fitWidth="413.0" layoutX="47.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+            <DatePicker fx:id="photoDatePicker" layoutX="30.0" layoutY="219.0" />
+            <Label layoutX="30.0" layoutY="198.0" text="Date">
+               <font>
+                  <Font name="Futura Medium" size="17.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

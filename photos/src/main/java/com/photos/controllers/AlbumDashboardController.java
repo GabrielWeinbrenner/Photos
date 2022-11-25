@@ -1,15 +1,12 @@
 package com.photos.controllers;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import com.photos.model.PhotoManagementSystem;
 import com.photos.shared.Controller;
 import com.photos.shared.CreationEventListener;
 import com.photos.shared.Thumbnail;
-import com.photos.shared.constants;
 import com.photos.model.EndUser;
 import com.photos.model.Photo;
 import com.photos.App;
@@ -17,6 +14,7 @@ import com.photos.model.Album;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
@@ -48,10 +46,25 @@ public class AlbumDashboardController extends Controller implements CreationEven
     }
 
     @Override
-    public void setData(Object obj) {
-        this.currentAlbum = (Album) obj;
+    public void setData(Object... obj) {
+        this.currentAlbum = (Album) obj[0];
     }
 
+    @Override
+    public void onMagicPhoto() {
+        ArrayList<Photo> photos = currentAlbum.getPhotos();
+        setGrid(photos);
+    }
+
+    @Override
+    public void onMagicAlbum() {
+        albumName.setText(currentAlbum.getAlbumName());
+    }
+
+    private void deletePhoto(Photo p) {
+        currentAlbum.removePhoto(p);
+        onMagicPhoto();
+    }
     private void setGrid(ArrayList<Photo> photos) {
         this.gridPane = new GridPane();
         this.gridPane.setHgap(25);
@@ -63,15 +76,37 @@ public class AlbumDashboardController extends Controller implements CreationEven
             if (i % COLUMNS == 0) {
                 j += 1;
             }
-            // String photoDate = LocalDateTime.parse(photo.getDate().toString(), DateTimeFormatter.ofPattern("MM-yyyy")).toString();
-            Thumbnail photoThumbnail = new Thumbnail(325, 325, "", "", photo.getStringDate(), photo.getImage());
+            Thumbnail photoThumbnail = new Thumbnail(325, 325, "", "", photo.getStringDate(), photo.getThumbnailImage());
             StackPane photoStack = photoThumbnail.getThumbnail();
-            constants.setHoverComponent(photoStack);
+
+            photoStack.setOnMouseEntered(
+                mouseEvent -> {
+                    photoStack.getScene().setCursor(Cursor.HAND);
+                    photoThumbnail.setButton("Delete", event -> deletePhoto(photo));   
+                }
+            );
+            photoStack.setOnMouseExited(
+                mouseEvent -> {
+                    photoStack.getScene().setCursor(Cursor.DEFAULT);
+                    photoThumbnail.removeButtons();
+                }
+            );
+            photoStack.setOnMouseClicked(
+                mouseEvent -> {
+                    try {
+                        PhotoPreviewerController ppc = new PhotoPreviewerController();
+                        App.setRoot("photo-preview", ppc, currentAlbum, photo);
+                    } catch(IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            );
+
             GridPane.setConstraints(photoStack, i % COLUMNS, j);
             this.gridPane.getChildren().add(photoStack);
+
         }
         photoScroll.setContent(gridPane);
-
     }
 
     @FXML
@@ -93,14 +128,4 @@ public class AlbumDashboardController extends Controller implements CreationEven
         App.setPopup("photo-form", pfc, currentAlbum);
     }
 
-    @Override
-    public void onAddPhoto() {
-        ArrayList<Photo> photos = currentAlbum.getPhotos();
-        setGrid(photos);
-    }
-
-    @Override
-    public void onMagicAlbum() {
-        albumName.setText(currentAlbum.getAlbumName());
-    }
 }

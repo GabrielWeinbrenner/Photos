@@ -2,6 +2,7 @@ package com.photos.controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 import com.photos.App;
 import com.photos.model.Album;
@@ -12,6 +13,7 @@ import com.photos.shared.CreationEventListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
@@ -33,16 +35,18 @@ public class PhotoFormController extends Controller {
     TextArea captionArea;
     @FXML
     ImageView photoPreviewer;
+    @FXML
+    DatePicker photoDatePicker;
 
     Image image;
-
+    Date imageDate;
     public void setAddPhoto(CreationEventListener listener) {
         this.listener = listener;
     }
 
     @Override
-    public void setData(Object obj) {
-        this.currentAlbum = (Album) obj;
+    public void setData(Object... obj) {
+        this.currentAlbum = (Album) obj[0];
     }
 
     @FXML
@@ -52,9 +56,9 @@ public class PhotoFormController extends Controller {
             errorAlert.setHeaderText("No Photo Provided");
             errorAlert.showAndWait();        
         } else {
-            Photo newPhoto = new Photo(captionArea.getText(), this.image);
+            Photo newPhoto = new Photo(captionArea.getText(), this.image, imageDate);
             currentAlbum.addPhoto(newPhoto);
-            listener.onAddPhoto(); 
+            listener.onMagicPhoto(); 
             App.closePopup();
         }
     }
@@ -73,7 +77,9 @@ public class PhotoFormController extends Controller {
             fileChooser.getExtensionFilters().addAll(
                     new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
             File selectedFile = fileChooser.showOpenDialog(App.popupStage);
-            this.image = new Image(selectedFile.toURI().toString(), 325, 325, false, true);
+            long milli = selectedFile.lastModified();
+            this.imageDate = new Date(milli);
+            this.image = new Image(selectedFile.toURI().toString());
             photoPreviewer.setImage(this.image);
         } catch (Exception e) {
             errorAlert.setHeaderText("Error in uploading file");

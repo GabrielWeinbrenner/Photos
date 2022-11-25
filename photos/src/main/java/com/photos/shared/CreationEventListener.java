@@ -1,6 +1,6 @@
 package com.photos.shared;
 
 public interface CreationEventListener {
-    void onAddPhoto();
+    void onMagicPhoto();
     void onMagicAlbum();
 }

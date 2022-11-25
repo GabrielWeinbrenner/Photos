@@ -75,4 +75,25 @@ public class Album {
         return minDateString + " - " + maxDateString ;
     }
 
+    public Photo getPreviousPhoto(Photo p) {
+        int index = this.photos.indexOf(p) - 1;
+        if(index < 0) {
+            index = this.photos.size() - 1;
+        }
+        return this.photos.get(index);
+    }
+
+    public Photo getNextPhoto(Photo p) {
+        int index = this.photos.indexOf(p) + 1;
+        if(index >= this.photos.size()) {
+            index = 0;
+        }
+        return this.photos.get(index);
+
+    }
+
+    public String getCurrentLocationString(Photo p)  {
+        int index = this.photos.indexOf(p);
+        return String.format("%d/%d", index+1, this.photos.size());
+    }
 }
