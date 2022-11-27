@@ -6,6 +6,8 @@ import com.photos.App;
 import com.photos.model.Album;
 import com.photos.model.Photo;
 import com.photos.shared.Controller;
+import com.photos.shared.CreationEventListener;
+import com.photos.shared.constants;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,7 +18,7 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
-public class PhotoPreviewerController extends Controller {
+public class PhotoPreviewerController extends Controller implements CreationEventListener {
 
 
     @FXML
@@ -111,6 +113,10 @@ public class PhotoPreviewerController extends Controller {
     @FXML
     private void editAction() throws IOException {
         // Have a popup with the edit caption and edit tags fields
+        PhotoFormController pfc = new PhotoFormController();
+        pfc.setAddPhoto(this);
+        App.setPopup("photo-form", pfc, currPhoto, constants.FORM_HEIGHT);
+        
     }
 
     @Override
@@ -124,6 +130,14 @@ public class PhotoPreviewerController extends Controller {
             }
         }
     }
+    @Override
+    public void onMagicPhoto() {
+        this.captionText.setText(currPhoto.getCaption());
+        this.photoPreviewView.setImage(currPhoto.getImage());
+        centerImage();
+    }
+    @Override
+    public void onMagicAlbum() {}
 
     
 

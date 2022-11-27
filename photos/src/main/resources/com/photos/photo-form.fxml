@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,43 +11,49 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxHeight="800.0" maxWidth="500.0" minHeight="800.0" minWidth="500.0" prefHeight="800.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="800.0" maxWidth="500.0" minHeight="850.0" minWidth="500.0" prefHeight="800.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="addButton" layoutX="57.0" layoutY="727.0" mnemonicParsing="false" onAction="#addPhotoAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura;  -fx-font-size: 20;" text="Add">
+            <Button fx:id="addButton" layoutX="57.0" layoutY="773.0" mnemonicParsing="false" onAction="#magicPhotoAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura;  -fx-font-size: 20;" text="Add">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="cancelButton" layoutX="262.0" layoutY="727.0" mnemonicParsing="false" onAction="#cancelCreatePhotoAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura;  -fx-font-size: 20;" text="Cancel">
+            <Button fx:id="cancelButton" layoutX="262.0" layoutY="773.0" mnemonicParsing="false" onAction="#cancelCreatePhotoAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura;  -fx-font-size: 20;" text="Cancel">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="uploadPhotoButton" layoutX="30.0" layoutY="255.0" maxHeight="40.0" maxWidth="184.0" minHeight="40.0" minWidth="184.0" mnemonicParsing="false" onAction="#uploadPhotoAction" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Upload Photo">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <TextArea fx:id="captionArea" layoutX="31.0" layoutY="119.0" maxHeight="100.0" maxWidth="445.0" minHeight="75.0" minWidth="445.0" prefHeight="75.0" prefWidth="445.0" />
+            <Button fx:id="uploadPhotoButton" layoutX="30.0" layoutY="327.0" maxHeight="31.0" maxWidth="184.0" minHeight="23.0" minWidth="184.0" mnemonicParsing="false" onAction="#uploadPhotoAction" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 13;" text="Upload Photo" textAlignment="CENTER" />
+            <TextArea fx:id="captionArea" layoutX="31.0" layoutY="88.0" maxHeight="100.0" maxWidth="445.0" minHeight="75.0" minWidth="445.0" prefHeight="75.0" prefWidth="445.0" />
             <Text layoutX="29.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD PHOTO">
                <font>
                   <Font name="Futura Medium" size="34.0" />
                </font>
             </Text>
-            <Label layoutX="30.0" layoutY="97.0" text="Caption">
+            <Label layoutX="30.0" layoutY="66.0" text="Caption">
                <font>
                   <Font name="Futura Medium" size="17.0" />
                </font>
             </Label>
-            <ImageView fx:id="photoPreviewer" fitHeight="392.0" fitWidth="413.0" layoutX="47.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
-            <DatePicker fx:id="photoDatePicker" layoutX="30.0" layoutY="219.0" />
-            <Label layoutX="30.0" layoutY="198.0" text="Date">
+            <ImageView fx:id="photoPreviewer" fitHeight="392.0" fitWidth="413.0" layoutX="47.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="30.0" layoutY="164.0" text="Tags">
                <font>
                   <Font name="Futura Medium" size="17.0" />
                </font>
             </Label>
+            <TableView fx:id="tagsTableView" layoutX="31.0" layoutY="187.0" prefHeight="105.0" prefWidth="445.0">
+              <columns>
+                <TableColumn fx:id="tagsNameTableView" prefWidth="203.0" text="Name" />
+                <TableColumn fx:id="tagsValueTableView" prefWidth="236.0" text="Value" />
+              </columns>
+            </TableView>
+            <Button fx:id="addTagButton" layoutX="30.0" layoutY="292.0" maxHeight="23.0" maxWidth="184.0" minHeight="13.0" minWidth="36.0" mnemonicParsing="false" onAction="#addTagAction" prefHeight="17.0" prefWidth="85.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 8;" text="Add tag" textAlignment="CENTER">
+               <font>
+                  <Font size="3.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
