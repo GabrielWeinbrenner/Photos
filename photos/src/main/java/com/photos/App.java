@@ -6,8 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 
+import com.photos.model.PhotoManagementSystem;
 import com.photos.shared.Controller;
 import com.photos.shared.constants;
 
@@ -16,16 +20,27 @@ import com.photos.shared.constants;
  */
 public class App extends Application {
 
+    PhotoManagementSystem ps = new PhotoManagementSystem();
+    PhotoManagementSystem PSInstance = PhotoManagementSystem.instance;
+
     public static Scene scene;
     private static Scene popup;
     public static Stage popupStage;
 
+
+
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws Exception {
         scene = new Scene(loadFXML("login"), constants.WIDTH, constants.HEIGHT);
         popup = new Scene(loadFXML("login"), constants.FORM_WIDTH, constants.FORM_HEIGHT);
+        // PhotoManagementSystem.readApp();
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        PhotoManagementSystem.writeApp(PSInstance);
     }
 
     public static void setRoot(String fxml) throws IOException {

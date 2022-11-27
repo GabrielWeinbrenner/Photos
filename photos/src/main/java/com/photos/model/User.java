@@ -1,8 +1,10 @@
 package com.photos.model;
 
+import java.io.Serializable;
+
 import com.photos.shared.constants.USER_TYPE;
 
-public abstract class User {
+public abstract class User implements Serializable {
     private String username;
     private String password;
 

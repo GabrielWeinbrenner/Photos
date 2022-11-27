@@ -1,10 +1,11 @@
 package com.photos.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.photos.shared.constants.USER_TYPE;
 
-public class EndUser extends User{
+public class EndUser extends User {
     private ArrayList<Album> albums;
 
     public EndUser(String username, String password) {

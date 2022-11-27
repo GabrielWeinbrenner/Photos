@@ -1,6 +1,8 @@
 package com.photos.model;
 
-public class Tag {
+import java.io.Serializable;
+
+public class Tag implements Serializable{
     public String tagName = "";
     public String tagValue = "";
     public Tag(String string, String string2) {

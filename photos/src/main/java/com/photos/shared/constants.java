@@ -12,6 +12,9 @@ public final class constants {
     public static final int FORM_WIDTH = 500;
     public static final String DEFAULT_IMAGE = "file:images/default.jpg";
     public static final String DEFAULT_DATE_FORMAT = "MMM d, yyyy";
+    public static final String STORE_DIR = "dat";
+    public static final String STORE_FILE = "pms.dat";
+
     public static enum USER_TYPE {
         EndUser,
         Admin,

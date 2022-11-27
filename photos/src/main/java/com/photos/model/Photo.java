@@ -1,5 +1,6 @@
 package com.photos.model;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -11,11 +12,12 @@ import com.photos.shared.constants;
 
 import javafx.scene.image.Image;
 
-public class Photo {
+public class Photo implements Serializable{
     private String caption;
     private ArrayList<Tag> tags = new ArrayList<>();
     private Date dateCreated = new Date();
-    private Image image = new Image(constants.DEFAULT_IMAGE);
+    private String url = "";
+    private transient Image image = new Image(constants.DEFAULT_IMAGE);
 
     /**
      * Creates a Photo that would store the caption, image, and date
@@ -31,6 +33,7 @@ public class Photo {
         this.image = image;
         this.dateCreated = date;
         this.tags = tags;
+        this.url = image.getUrl();
     }
 
     public String getCaption() {
@@ -57,6 +60,7 @@ public class Photo {
     }
 
     public Image getImage() {
+        this.image = new Image(url);
         return this.image;
     }
 

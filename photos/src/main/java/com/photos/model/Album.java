@@ -1,5 +1,6 @@
 package com.photos.model;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,7 +9,7 @@ import com.photos.shared.constants;
 
 import javafx.scene.image.Image;
 
-public class Album {
+public class Album implements Serializable {
     private String albumName;
     private ArrayList<Photo> photos;
 
