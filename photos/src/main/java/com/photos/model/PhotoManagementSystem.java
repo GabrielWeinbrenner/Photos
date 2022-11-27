@@ -9,20 +9,41 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.photos.shared.constants;
+
+import javafx.scene.image.Image;
 
 public class PhotoManagementSystem implements Serializable {
     private User currentUser;
     private ArrayList<User> users;
     public static PhotoManagementSystem instance;
-
+    public Photo createPhoto(String img, String caption) {
+        File i = new File("file:images/"+img);
+        Photo photo = new Photo(caption, new Image("file:images/"+img), new Date(i.lastModified()), new ArrayList<Tag>());
+        return photo;
+    }
     public PhotoManagementSystem() {
         if(instance == null) {
             try {
                 if(!readApp()) {
                     users = new ArrayList<>();
-                    users.add(new EndUser("h", "h"));
+                    EndUser stockUser = new EndUser("stock", "stock");
+                    Album rutgersAlbum = stockUser.createAlbum("Rutgers");
+                    Album summerAlbum = stockUser.createAlbum("Summer");
+                    String[] rutgersPhotos = {"rutgers_sign.jpg", "rutgers_bus.jpg", "rutgers_busch.jpg", "rutgers_livingston.jpg", "rutgers_sidewalk.JPG"};
+                    String[] rutgersCaption = {"Sign of Rutgers", "Bus to cook doug", "Busch Campus", "Livingston Capmus", "Rutgers Walkway"};
+                    for(int i = 0; i < rutgersPhotos.length; i++) {
+                        rutgersAlbum.addPhoto(createPhoto(rutgersPhotos[i], rutgersCaption[i]));
+                    }
+                    String[] summerPhotos = {"watermelons.jpg", "cloud.jpg", "beach.jpg", "sunflower.jpg"};
+                    String[] summerCaptions = {"Watermelons", "Clouds", "Beach", "Sunflower"};
+                    for(int i = 0; i < summerPhotos.length; i++) {
+                        summerAlbum.addPhoto(createPhoto(summerPhotos[i], summerCaptions[i]));
+                    }
+                    users.add(stockUser);
+                    users.add(new Adminstrator("admin", "admin"));
                     instance = this;
                 }
             } catch (ClassNotFoundException e) {

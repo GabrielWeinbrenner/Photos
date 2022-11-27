@@ -56,11 +56,13 @@ public class Photo implements Serializable{
     }
 
     public Image getThumbnailImage() {
-        return new Image(this.image.getUrl(), 325, 325, false, true);
+        return new Image(this.url, 325, 325, false, true);
     }
 
     public Image getImage() {
-        this.image = new Image(url);
+        if(this.image == null) {
+            this.image = new Image(url);
+        }
         return this.image;
     }
 
