@@ -187,6 +187,10 @@ public class SearchDashboardController implements CreationEventListener {
                     }
                     for (Tag tag : photo.getTags()) {
                         String[] firstTag = searchArgs[0].split("=");
+                        if (firstTag[0].equals(tag.getTagName()) && firstTag[1].equals(tag.getTagValue())) {
+                            shouldAddPhoto = true;
+                            break;
+                        }
                         if (!firstTag[0].equals(tag.getTagName()) && !firstTag[1].equals(tag.getTagValue())) {
                             shouldAddPhoto = false;
                         }

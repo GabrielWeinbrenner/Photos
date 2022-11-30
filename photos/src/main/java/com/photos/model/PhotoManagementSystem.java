@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -82,7 +81,6 @@ public class PhotoManagementSystem implements Serializable {
         }
         return true;
     }
-    
     public User getCurrentUser() {
         return currentUser;
     } 
@@ -107,6 +105,14 @@ public class PhotoManagementSystem implements Serializable {
             return;
         }
         throw new Exception("No user is logged in");
+    }
+
+    public void createUser(String username, String password) {
+        users.add(new EndUser(username, password));
+    }
+
+    public void removeUser(EndUser currentSelectedUser) {
+        users.remove(currentSelectedUser);
     }
     
 }
