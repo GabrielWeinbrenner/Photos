@@ -31,7 +31,7 @@ public class LoginController {
         try {
             User result = PSInstance.login(usernameInput.getText(), passwordInput.getText());
             if(result.getType() == USER_TYPE.Admin) {
-                App.setRoot("admin-dashboard");
+                App.setRoot("admin-user-dashboard");
             } else if(result.getType() == USER_TYPE.EndUser) {
                 App.setRoot("end-user-dashboard");
             }

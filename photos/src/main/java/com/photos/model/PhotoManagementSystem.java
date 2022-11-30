@@ -87,6 +87,10 @@ public class PhotoManagementSystem implements Serializable {
         return currentUser;
     } 
 
+    public ArrayList<User> getUsers() {
+        return users;
+    } 
+
     public User login(String username, String password) throws Exception {
         for (User user : users) {
             if(user.validateLogin(username, password)) {

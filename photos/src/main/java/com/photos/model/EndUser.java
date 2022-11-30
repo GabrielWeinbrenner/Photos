@@ -16,6 +16,10 @@ public class EndUser extends User {
     public ArrayList<Album> getAlbums() {
         return this.albums;
     }
+    
+    public int getAlbumCount() {
+        return this.albums.size();
+    }
 
     public Album createAlbum(String name) {
         Album newAlbum = new Album(name);

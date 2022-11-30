@@ -17,6 +17,10 @@ public abstract class User implements Serializable {
         return username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public boolean validateLogin(String username, String password) {
         return (this.username.equals(username) && this.password.equals(password));
     } 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="682.0" maxWidth="1212.0" minHeight="682.0" minWidth="1212.0" prefHeight="682.0" prefWidth="1212.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.photos.controllers.AdminUserDashboardController">
+   <children>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="682.0" prefWidth="1212.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button fx:id="logoutButton" layoutX="885.0" layoutY="602.0" mnemonicParsing="false" onAction="#logOutAction" prefHeight="47.0" prefWidth="269.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Logout">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="createUserButton" layoutX="73.0" layoutY="592.0" mnemonicParsing="false" onAction="#createUserAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Create User">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <TableView fx:id="userTable" layoutX="151.0" layoutY="45.0" prefHeight="316.0" prefWidth="902.0">
+              <columns>
+                <TableColumn fx:id="usernameTableColumn" prefWidth="262.6794624328613" text="User" />
+                  <TableColumn fx:id="passwordTableColumn" minWidth="0.0" prefWidth="309.3205871582031" text="Password" />
+                <TableColumn fx:id="albumTableColumn" minWidth="0.0" prefWidth="328.5" text="Albums" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
