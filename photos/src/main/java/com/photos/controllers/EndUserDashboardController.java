@@ -13,6 +13,7 @@ import com.photos.model.Album;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -43,6 +44,11 @@ public class EndUserDashboardController implements CreationEventListener{
         setGrid(albums);
     }
 
+    private void deleteAlbum(Album album) {
+        currentUser.deleteAlbum(album);
+        onMagicAlbum();
+    }
+
     private void setGrid(ArrayList<Album> albums) {
         this.gridPane = new GridPane();
         this.gridPane.setHgap(25);
@@ -58,6 +64,12 @@ public class EndUserDashboardController implements CreationEventListener{
                     album.getAlbumSize() + " photos", album.getThumbnail());
             StackPane albumStack = albumThumbnail.getThumbnail();
             constants.setHoverComponent(albumStack);
+            albumStack.setOnMouseEntered(
+                mouseEvent -> {
+                    albumStack.getScene().setCursor(Cursor.HAND);
+                    albumThumbnail.setButton("Delete", event -> deleteAlbum(album));   
+                }
+            );
             albumStack.setOnMouseClicked(
                 e -> {
                     try {
@@ -76,6 +88,7 @@ public class EndUserDashboardController implements CreationEventListener{
 
     @FXML
     private void searchAlbumAction() throws IOException {
+        App.setRoot("search-dashboard");
     }
 
     @FXML

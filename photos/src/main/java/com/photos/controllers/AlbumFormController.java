@@ -1,8 +1,11 @@
 package com.photos.controllers;
 
+import java.util.ArrayList;
+
 import com.photos.App;
 import com.photos.model.Album;
 import com.photos.model.EndUser;
+import com.photos.model.Photo;
 import com.photos.model.PhotoManagementSystem;
 import com.photos.shared.Controller;
 import com.photos.shared.CreationEventListener;
@@ -17,7 +20,8 @@ public class AlbumFormController extends Controller {
 
     private enum STATE {
         RENAME, 
-        CREATE
+        CREATE,
+        SEARCH,
     }
     PhotoManagementSystem ps = new PhotoManagementSystem();
     PhotoManagementSystem PSInstance = PhotoManagementSystem.instance;;
