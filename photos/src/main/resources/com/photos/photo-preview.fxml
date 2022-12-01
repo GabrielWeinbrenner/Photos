@@ -27,19 +27,19 @@
                   <Font name="Futura Medium" size="40.0" />
                </font>
             </Text>
-            <Button fx:id="backButton" layoutX="235.0" layoutY="600.0" mnemonicParsing="false" onAction="#backAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Back">
+            <Button fx:id="backButton" layoutX="95.0" layoutY="600.0" mnemonicParsing="false" onAction="#backAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Back">
                <font>
                   <Font name="Futura Medium" size="20.0" />
                </font>
             </Button>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="423.0" layoutX="240.0" layoutY="85.0" stroke="BLACK" strokeType="INSIDE" width="736.0" />
             <ImageView fx:id="photoPreviewView" fitHeight="401.0" fitWidth="670.0" layoutX="272.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="editButton" layoutX="515.0" layoutY="600.0" mnemonicParsing="false" onAction="#editAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Edit">
+            <Button fx:id="editButton" layoutX="375.0" layoutY="600.0" mnemonicParsing="false" onAction="#editAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="View/Edit">
                <font>
                   <Font name="Futura Medium" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="deleteButton" layoutX="795.0" layoutY="600.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Delete">
+            <Button fx:id="deleteButton" layoutX="655.0" layoutY="600.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Delete">
                <font>
                   <Font name="Futura Medium" size="20.0" />
                </font>
@@ -54,6 +54,11 @@
                   <Font name="Futura Medium" size="24.0" />
                </font>
             </Text>
+            <Button fx:id="moveButton" layoutX="955.0" layoutY="600.0" mnemonicParsing="false" onAction="#moveAction" prefHeight="59.0" prefWidth="184.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Move/Copy">
+               <font>
+                  <Font name="Futura Medium" size="20.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

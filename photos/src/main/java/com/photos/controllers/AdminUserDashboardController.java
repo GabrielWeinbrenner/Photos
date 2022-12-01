@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
@@ -60,6 +61,10 @@ public class AdminUserDashboardController {
     TableColumn<User, String> passwordTableColumn;
     @FXML
     TableColumn<EndUser, String> albumTableColumn;
+    @FXML
+    TextField usernameTextField;
+    @FXML
+    TextField passwordTextField;
 
     GridPane gridPane;
 
@@ -97,13 +102,19 @@ public class AdminUserDashboardController {
      */
     @FXML
     private void createUserAction() throws IOException {
-        // Set Create User Popup
-        // UserFormController ufc = new UserFormController();
-        // try {
-        //     App.setPopup("user-create-form", ufc, currentUser, 320);
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // }
+        PSInstance.createUser(usernameTextField.getText(), passwordTextField.getText());
+        usernameTextField.setText("");
+        passwordTextField.setText("");
+        setTable(PSInstance.getUsers());
+        refreshRow();
+    }
+
+    @FXML
+    private void deleteUserAction() throws IOException {
+        EndUser currentSelectedUser = (EndUser) userTable.getSelectionModel().getSelectedItem();
+        PSInstance.removeUser(currentSelectedUser);
+        setTable(PSInstance.getUsers());
+        refreshRow();
     }
 
     

@@ -54,6 +54,11 @@
                   <Font size="3.0" />
                </font>
             </Button>
+            <Button fx:id="removeTagButton" layoutX="132.0" layoutY="292.0" maxHeight="23.0" maxWidth="184.0" minHeight="13.0" minWidth="36.0" mnemonicParsing="false" onAction="#removeTagAction" prefHeight="17.0" prefWidth="117.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 8;" text="Remove Highlighted Tag" textAlignment="CENTER">
+               <font>
+                  <Font size="3.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

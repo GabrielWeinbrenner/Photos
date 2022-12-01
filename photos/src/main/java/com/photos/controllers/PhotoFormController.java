@@ -178,11 +178,15 @@ public class PhotoFormController extends Controller {
         tagsTableView.getItems().add(new Tag("", ""));
         refreshRow();
     }
-    
-    /** 
-     * cancel making new photo
-     * @throws IOException error
-     */
+
+    @FXML
+    private void removeTagAction() {
+        Tag tag = tagsTableView.getSelectionModel().getSelectedItem();
+        setTableContent(currentPhoto.getTags());
+        currentPhoto.removeTag(tag);
+        refreshRow();
+    }
+
     @FXML
     private void cancelCreatePhotoAction() throws IOException {
         App.closePopup();
