@@ -15,10 +15,32 @@ import com.photos.shared.constants;
 
 import javafx.scene.image.Image;
 
+/**
+ * the master photo management system class with functions
+ * 
+ * @author Gabe Weinbrenner gcw35
+ * @author Zihe Zhang zz475
+ */
 public class PhotoManagementSystem implements Serializable {
+    /** 
+     * current user
+     */
     private User currentUser;
+    /**
+     * all users in database
+     */
     private ArrayList<User> users;
+    /**
+     * new PhotoManagementSystem instance
+     */
     public static PhotoManagementSystem instance;
+    
+    /** 
+     * make new photo with image and name
+     * @param img new photo
+     * @param caption description of the photo
+     * @return new created Photo
+     */
     public Photo createPhoto(String img, String caption) {
         File i = new File("file:images/"+img);
         Photo photo = new Photo(caption, new Image("file:images/"+img), new Date(i.lastModified()), new ArrayList<Tag>());
@@ -54,6 +76,12 @@ public class PhotoManagementSystem implements Serializable {
         }
     }
 
+    
+    /** 
+     * process app
+     * @param pms the entire photo system
+     * @throws IOException any error
+     */
     public static void writeApp(PhotoManagementSystem pms) throws IOException{
         ObjectOutputStream oos = new ObjectOutputStream(
             new FileOutputStream(constants.STORE_DIR + File.separator + constants.STORE_FILE)
@@ -62,6 +90,13 @@ public class PhotoManagementSystem implements Serializable {
         oos.close();
     }
 
+    
+    /** 
+     * process app
+     * @return if the app functioning boolean
+     * @throws IOException any error
+     * @throws ClassNotFoundException not found error
+     */
     public static boolean readApp() throws IOException, ClassNotFoundException {
         try {
             File file = new File(constants.STORE_DIR + File.separator + constants.STORE_FILE);
@@ -83,14 +118,32 @@ public class PhotoManagementSystem implements Serializable {
         return true;
     }
     
+    
+    /** 
+     * return the logged in user now
+     * @return logged in User 
+     */
     public User getCurrentUser() {
         return currentUser;
     } 
 
+    
+    /** 
+     * return all users in database
+     * @return all users in ArrayList<User>
+     */
     public ArrayList<User> getUsers() {
         return users;
     } 
 
+    
+    /** 
+     * log in user
+     * @param username username
+     * @param password password
+     * @return logedin User
+     * @throws Exception error if not logged in 
+     */
     public User login(String username, String password) throws Exception {
         for (User user : users) {
             if(user.validateLogin(username, password)) {
@@ -101,6 +154,11 @@ public class PhotoManagementSystem implements Serializable {
         throw new Exception("Invalid username or password");
     }
 
+    
+    /** 
+     * log out the current user
+     * @throws Exception error
+     */
     public void logout() throws Exception {
         if(!currentUser.equals(null)) {
             currentUser = null;

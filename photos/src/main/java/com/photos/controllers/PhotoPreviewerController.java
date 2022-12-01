@@ -18,6 +18,13 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
+/**
+ * controllers for viewing photos
+ * 
+ * @author Gabe Weinbrenner gcw35
+ * @author Zihe Zhang zz475
+ */
+
 public class PhotoPreviewerController extends Controller implements CreationEventListener {
 
 
@@ -37,9 +44,17 @@ public class PhotoPreviewerController extends Controller implements CreationEven
     Text captionText;
     @FXML
     Text locationText;
-
+    /**
+     * current photo
+     */
     Photo currPhoto;
+    /**
+     * current album
+     */
     Album currAlbum;
+    /**
+     * set up arrow detection to move the photos
+     */
     @FXML
     private void initialize() {
         setPhotoPreview();
@@ -51,29 +66,46 @@ public class PhotoPreviewerController extends Controller implements CreationEven
             }
         });
     }
+    /**
+     * create the basic view page
+     */
     private void setPhotoPreview() {
         captionText.setText(currPhoto.getCaption());
         photoPreviewView.setImage(currPhoto.getImage());
         centerImage();
         locationText.setText(currAlbum.getCurrentLocationString(currPhoto));
     }
+    /**
+     *  move to the last photo
+     */
     @FXML
     private void previousPhotoAction() {
         currPhoto = currAlbum.getPreviousPhoto(currPhoto);
         setPhotoPreview();
     }
 
+    /**
+     * move to next photo
+     */
     @FXML
     private void nextPhotoAction() {
         currPhoto = currAlbum.getNextPhoto(currPhoto);
         setPhotoPreview();
     }
 
+    
+    /** 
+     * go back to previous scene
+     * @throws IOException error
+     */
     @FXML
     private void backAction() throws IOException {
         AlbumDashboardController adc = new AlbumDashboardController();
         App.setRoot("album-dashboard", adc, currAlbum);
     }
+    /**
+     * make image in the center and formatted and styled
+     */
     public void centerImage() {
         Image img = photoPreviewView.getImage();
         if (img != null) {
@@ -98,6 +130,9 @@ public class PhotoPreviewerController extends Controller implements CreationEven
 
         }
     }
+    /**
+     * set up delete button
+     */
     @FXML
     private void deleteAction() {
         // Add confirmation
@@ -110,6 +145,11 @@ public class PhotoPreviewerController extends Controller implements CreationEven
         setPhotoPreview();
     }
 
+    
+    /** 
+     * set up edit button
+     * @throws IOException error
+     */
     @FXML
     private void editAction() throws IOException {
         // Have a popup with the edit caption and edit tags fields
@@ -119,6 +159,11 @@ public class PhotoPreviewerController extends Controller implements CreationEven
         
     }
 
+    
+    /** 
+     * update the new album data
+     * @param args new data
+     */
     @Override
     public void setData(Object... args) {
         for(int i = 0; i < args.length; i++){
@@ -130,6 +175,9 @@ public class PhotoPreviewerController extends Controller implements CreationEven
             }
         }
     }
+    /**
+     * set new data for photo
+     */
     @Override
     public void onMagicPhoto() {
         this.captionText.setText(currPhoto.getCaption());

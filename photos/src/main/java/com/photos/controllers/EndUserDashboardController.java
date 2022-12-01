@@ -21,10 +21,28 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
+/**
+ * controller for regular user and not the admin
+ * 
+ * @author Gabe Weinbrenner gcw35
+ * @author Zihe Zhang zz475
+ */
 public class EndUserDashboardController implements CreationEventListener{
+    /**
+     * create new PhotoManagementSystem
+     */
     PhotoManagementSystem ps = new PhotoManagementSystem();
+    /**
+    * create PhotoManagementSystem instance
+    */
     PhotoManagementSystem PSInstance = PhotoManagementSystem.instance;
+    /**
+     * current user
+     */
     EndUser currentUser = (EndUser) PSInstance.getCurrentUser();
+    /**
+     * current user's all albums
+     */
     ArrayList<Album> albums = currentUser.getAlbums();
 
     final int COLUMNS = 3;
@@ -39,16 +57,29 @@ public class EndUserDashboardController implements CreationEventListener{
 
     GridPane gridPane;
 
-    @FXML
+    
+    /**
+     * set new album
+     */
     public void initialize() {
         setGrid(albums);
     }
 
+    
+    /** 
+     * delete the input album
+     * @param album to be deleted
+     */
     private void deleteAlbum(Album album) {
         currentUser.deleteAlbum(album);
         onMagicAlbum();
     }
 
+    
+    /**
+     * update the data about albums
+     * @param albums new data
+     */
     private void setGrid(ArrayList<Album> albums) {
         this.gridPane = new GridPane();
         this.gridPane.setHgap(25);
@@ -86,11 +117,21 @@ public class EndUserDashboardController implements CreationEventListener{
         albumScroll.setContent(gridPane);
     }
 
+    
+    /** 
+     * Search for albums
+     * @throws IOException error
+     */
     @FXML
     private void searchAlbumAction() throws IOException {
         App.setRoot("search-dashboard");
     }
 
+    
+    /** 
+     * listensers to create new album
+     * @throws IOException error
+     */
     @FXML
     private void createAlbumAction() throws IOException {
         AlbumFormController afc = new AlbumFormController();
@@ -102,6 +143,11 @@ public class EndUserDashboardController implements CreationEventListener{
         }
     }
 
+    
+    /** 
+     * log out handler
+     * @throws IOException error
+     */
     @FXML
     private void logOutAction() throws IOException {
         Alert errorAlert = new Alert(AlertType.ERROR);
@@ -115,12 +161,15 @@ public class EndUserDashboardController implements CreationEventListener{
         }
     }
 
+    /**
+     * set new albums to gris
+     */
     @Override
     public void onMagicAlbum() {
         ArrayList<Album> albums = currentUser.getAlbums();
         setGrid(albums);
     }
-
+    
     @Override
     public void onMagicPhoto() {}
 }

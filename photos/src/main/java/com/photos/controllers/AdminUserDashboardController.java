@@ -28,9 +28,24 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
+/**
+ * admin user controller to view other users accounts
+ * 
+ * @author Gabe Weinbrenner gcw35
+ * @author Zihe Zhang zz475
+ */
 public class AdminUserDashboardController {
+    /**
+     * create new PhotoManagementSystem
+     */
     PhotoManagementSystem ps = new PhotoManagementSystem();
+    /**
+     * create PhotoManagementSystem instance
+     */
     PhotoManagementSystem PSInstance = PhotoManagementSystem.instance;
+    /**
+     * The current user who is logged in
+     */
     Adminstrator currentUser = (Adminstrator) PSInstance.getCurrentUser();
 
     @FXML
@@ -54,18 +69,32 @@ public class AdminUserDashboardController {
         refreshRow();
     }
 
+    
+    /** 
+     * Initilize the table of user and their data
+     * @param users users
+     * 
+     */
     private void setTable(ArrayList<User> users) {
         ObservableList<User> userData = FXCollections.<User>observableArrayList();
         userData.addAll(users);
         userTable.setItems(userData);
     }
 
+    /**
+     * Update the the UI scene
+     */
     public void refreshRow() {
         this.usernameTableColumn.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
         this.passwordTableColumn.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
         this.albumTableColumn.setCellValueFactory(new PropertyValueFactory<EndUser, String>("albumCount"));
     }
 
+    
+    /** 
+     * Creat new user
+     * @throws IOException error
+     */
     @FXML
     private void createUserAction() throws IOException {
         // Set Create User Popup
@@ -77,6 +106,11 @@ public class AdminUserDashboardController {
         // }
     }
 
+    
+    /** 
+     * Log out current user
+     * @throws IOException error
+     */
     @FXML
     private void logOutAction() throws IOException {
         Alert errorAlert = new Alert(AlertType.ERROR);
