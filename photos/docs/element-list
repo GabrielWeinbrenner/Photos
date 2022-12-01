@@ -1,4 +1,5 @@
+module:com.photos
 com.photos
-controllers
-model
-shared
+com.photos.controllers
+com.photos.model
+com.photos.shared
