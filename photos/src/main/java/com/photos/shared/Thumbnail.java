@@ -18,8 +18,23 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
+/**
+ * template for thumbnail
+ * 
+ * @author Gabe Weinbrenner gcw35
+ * @author Zihe Zhang zz475
+ */
 public class Thumbnail {
     private StackPane thumbnail;
+    /**
+     * make all UI changes
+     * @param width window width
+     * @param height window height
+     * @param header string header text
+     * @param subheader string secondary header
+     * @param subtitle string subs
+     * @param image incoming image
+     */
     public Thumbnail(int width, int height, String header, String subheader, String subtitle, Image image){
         StackPane stack = new StackPane();
         Rectangle background = new Rectangle(325, 325);
@@ -65,6 +80,13 @@ public class Thumbnail {
         thumbnail = stack;
     }
 
+    
+    /** 
+     * set up the set button for new thumbnail
+     * @param text input string
+     * @param event new event
+     * @return the updated StackPane with thumbnail
+     */
     public StackPane setButton(String text, EventHandler<MouseEvent> event) {
         Button delete = new Button("Delete");
         thumbnail.getChildren().add(delete);
@@ -73,6 +95,11 @@ public class Thumbnail {
         return thumbnail;
     }
 
+    
+    /** 
+     * set up remove button
+     * @return the new StackPane
+     */
     public StackPane removeButtons() {
         ObservableList<Node> children = thumbnail.getChildren();
 
@@ -85,6 +112,11 @@ public class Thumbnail {
         return thumbnail;
     }
 
+    
+    /** 
+     * return thumbnail
+     * @return thumbnail in StackPane
+     */
     public StackPane getThumbnail(){
         return thumbnail;
     }

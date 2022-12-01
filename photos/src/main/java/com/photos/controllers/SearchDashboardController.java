@@ -30,10 +30,29 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
+/**
+ * controller for seaching functions
+ * 
+ * @author Gabe Weinbrenner gcw35
+ * @author Zihe Zhang zz475
+ */
+
 public class SearchDashboardController implements CreationEventListener {
+    /**
+     * create new PhotoManagementSystem
+     */
     PhotoManagementSystem ps = new PhotoManagementSystem();
+     /**
+     * create PhotoManagementSystem instance
+     */
     PhotoManagementSystem PSInstance = PhotoManagementSystem.instance;
+    /**
+     * the logged in user
+     */
     EndUser currentUser = (EndUser) PSInstance.getCurrentUser();
+    /**
+     * make empty photos list
+     */
     ArrayList<Photo> photos = new ArrayList<>();
     final int COLUMNS = 3;
 
@@ -54,11 +73,19 @@ public class SearchDashboardController implements CreationEventListener {
 
     GridPane gridPane;
 
+    /**
+     * set grid
+     */
     @FXML
     public void initialize() {
         setGrid(photos);
     }
 
+    
+    /** 
+     * update all the UI component 
+     * @param photos photos in arrayList
+     */
     private void setGrid(ArrayList<Photo> photos) {
         this.gridPane = new GridPane();
         this.gridPane.setHgap(25);
@@ -81,11 +108,19 @@ public class SearchDashboardController implements CreationEventListener {
         searchScroll.setContent(gridPane);
     }
 
+    
+    /** 
+     * move the scene to last 
+     * @throws IOException error
+     */
     @FXML
     private void backAction() throws IOException {
         App.setRoot("end-user-dashboard");
     }
 
+    /**
+     * set up the make new album button
+     */
     @FXML
     private void makeAlbumAction() {
         AlbumFormController afc = new AlbumFormController();
@@ -107,6 +142,9 @@ public class SearchDashboardController implements CreationEventListener {
 
     }
 
+    /**
+     * search for all of the remaining photos in all albums for given status
+     */
     @FXML
     private void searchAction() {
         Alert errorAlert = new Alert(AlertType.ERROR);
@@ -211,12 +249,18 @@ public class SearchDashboardController implements CreationEventListener {
         setGrid(photos);
     }
 
+    /** 
+     * do something with magic photo
+     */
     @Override
     public void onMagicPhoto() {
         // TODO Auto-generated method stub
 
     }
 
+    /**
+     * set new scene to dashboard
+     */
     @Override
     public void onMagicAlbum() {
         try {

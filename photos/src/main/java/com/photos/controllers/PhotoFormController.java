@@ -31,13 +31,25 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
+/**
+ * controller for forms to edit photos
+ * 
+ * @author Gabe Weinbrenner gcw35
+ * @author Zihe Zhang zz475
+ */
 public class PhotoFormController extends Controller {
     private enum STATE {
         EDIT,
         CREATE
     }
 
+    /**
+     * listen for the new event
+     */
     private CreationEventListener listener;
+    /** 
+     * current state
+     */
     private STATE state;
     Album currentAlbum;
 
@@ -62,10 +74,20 @@ public class PhotoFormController extends Controller {
     Date imageDate;
     Photo currentPhoto;
 
+    
+    /** 
+     * add new event listenser
+     * @param listener listener
+     */
     public void setAddPhoto(CreationEventListener listener) {
         this.listener = listener;
     }
 
+    
+    /** 
+     * update all the album data
+     * @param obj new data
+     */
     @Override
     public void setData(Object... obj) {
         for(int i = 0; i < obj.length; i++) {
@@ -81,12 +103,20 @@ public class PhotoFormController extends Controller {
         }
     }
 
+    
+    /** 
+     * update the new contents for the table data
+     * @param tagList  arraylist of tags
+     */
     public void setTableContent(ArrayList<Tag> tagList) {
         ObservableList<Tag> data = FXCollections.<Tag>observableArrayList();
         data.addAll(tagList);
         tagsTableView.setItems(data);
     }
 
+    /**
+     * update the displaying UI
+     */
     public void refreshRow() {
         this.tagsNameTableView.setCellValueFactory(new PropertyValueFactory<Tag, String>("tagName"));
         this.tagsValueTableView.setCellValueFactory(new PropertyValueFactory<Tag, String>("tagValue"));
@@ -97,6 +127,9 @@ public class PhotoFormController extends Controller {
         tagsValueTableView.setCellFactory(TextFieldTableCell.<Tag>forTableColumn()); 
         tagsValueTableView.setOnEditCommit(e->e.getTableView().getItems().get(e.getTablePosition().getRow()).setTagValue(e.getNewValue()));
     }
+    /**
+     * set up the page with UI
+     */
     @FXML
     private void initialize() {
         tagsTableView.setPlaceholder(
@@ -113,6 +146,11 @@ public class PhotoFormController extends Controller {
         }
         tagsTableView.setEditable(true);
     }
+    
+    /** 
+     * add the new edited magic photo
+     * @throws Exception error
+     */
     @FXML
     private void magicPhotoAction() throws Exception {
         Alert errorAlert = new Alert(AlertType.ERROR);
@@ -132,6 +170,9 @@ public class PhotoFormController extends Controller {
         }
     }
 
+    /**
+     * add new tags
+     */
     @FXML
     private void addTagAction() {
         tagsTableView.getItems().add(new Tag("", ""));
@@ -151,6 +192,11 @@ public class PhotoFormController extends Controller {
         App.closePopup();
     }
 
+    
+    /** 
+     * upload new photos to album
+     * @throws IOException error
+     */
     @FXML
     private void uploadPhotoAction() throws IOException {
         Alert errorAlert = new Alert(AlertType.ERROR);

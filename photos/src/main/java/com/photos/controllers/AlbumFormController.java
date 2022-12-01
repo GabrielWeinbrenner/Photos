@@ -16,6 +16,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.text.Text;
+/**
+ * controls the album
+ * 
+ * @author Gabe Weinbrenner gcw35
+ * @author Zihe Zhang zz475
+ */
 public class AlbumFormController extends Controller {
 
     private enum STATE {
@@ -23,10 +29,25 @@ public class AlbumFormController extends Controller {
         CREATE,
         SEARCH,
     }
+    /**
+     * create new PhotoManagementSystem
+     */
     PhotoManagementSystem ps = new PhotoManagementSystem();
+    /**
+     * create PhotoManagementSystem instance
+     */
     PhotoManagementSystem PSInstance = PhotoManagementSystem.instance;;
+    /**
+     * create new listener for event
+     */
     private CreationEventListener listener;
+    /**
+     * current album
+     */
     private Album currAlbum;
+    /**
+     * current State
+     */
     private STATE state;
 
     @FXML
@@ -36,6 +57,11 @@ public class AlbumFormController extends Controller {
     @FXML
     Text formTitle;
 
+    
+    /** 
+     * Upgrade current album
+     * @param obj new data
+     */
     @Override
     public void setData(Object... obj) {
         for(int i = 0; i < obj.length; i++){
@@ -49,10 +75,18 @@ public class AlbumFormController extends Controller {
         }
     }
 
+    
+    /** 
+     * Litesten to the new Eevent such as adding new albums
+     * @param listener listener
+     */
     public void setAddAlbum(CreationEventListener listener) {
         this.listener = listener;
     }
 
+    /**
+     * Set new album form
+     */
     @FXML 
     private void initialize() {
         if(state == STATE.RENAME) {
@@ -61,11 +95,19 @@ public class AlbumFormController extends Controller {
             formTitle.setText("Rename Album");
         }
     }
+    /**
+     * close the add album pop up
+     */
     @FXML 
     private void cancelAddAlbumAction() {
         App.closePopup();
     }
 
+    
+    /** 
+     * create new magic album
+     * @throws Exception error
+     */
     @FXML
     private void magicAlbumAction() {
         Alert errorAlert = new Alert(AlertType.ERROR);
