@@ -48,20 +48,19 @@ public class PhotoManagementSystem implements Serializable {
                     EndUser stockUser = new EndUser("stock", "stock");
 
                     try {
-                        Album rutgersAlbum;
-                        rutgersAlbum = stockUser.createAlbum("Rutgers");
-                        Album summerAlbum = stockUser.createAlbum("Summer");
+                        Album stockAlbum;
+                        stockAlbum = stockUser.createAlbum("stock");
                         String[] rutgersPhotos = { "rutgers_sign.jpg", "rutgers_bus.jpg", "rutgers_busch.jpg",
                                 "rutgers_livingston.jpg", "rutgers_sidewalk.JPG" };
                         String[] rutgersCaption = { "Sign of Rutgers", "Bus to cook doug", "Busch Campus",
                                 "Livingston Capmus", "Rutgers Walkway" };
                         for (int i = 0; i < rutgersPhotos.length; i++) {
-                            rutgersAlbum.addPhoto(createPhoto(rutgersPhotos[i], rutgersCaption[i]));
+                            stockAlbum.addPhoto(createPhoto(rutgersPhotos[i], rutgersCaption[i]));
                         }
                         String[] summerPhotos = { "watermelons.jpg", "cloud.jpg", "beach.jpg", "sunflower.jpg" };
                         String[] summerCaptions = { "Watermelons", "Clouds", "Beach", "Sunflower" };
                         for (int i = 0; i < summerPhotos.length; i++) {
-                            summerAlbum.addPhoto(createPhoto(summerPhotos[i], summerCaptions[i]));
+                            stockAlbum.addPhoto(createPhoto(summerPhotos[i], summerCaptions[i]));
                         }
                         users.add(stockUser);
                         users.add(new Adminstrator("admin", "admin"));
