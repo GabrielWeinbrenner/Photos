@@ -21,7 +21,12 @@ public class EndUser extends User {
         return this.albums.size();
     }
 
-    public Album createAlbum(String name) {
+    public Album createAlbum(String name) throws Exception {
+        for(Album album : albums) {
+            if(album.getAlbumName().equals(name)) {
+                throw new Exception("Name already in album");
+            }
+        }
         Album newAlbum = new Album(name);
         albums.add(newAlbum);
         return newAlbum;

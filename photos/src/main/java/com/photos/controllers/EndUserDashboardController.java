@@ -70,6 +70,12 @@ public class EndUserDashboardController implements CreationEventListener{
                     albumThumbnail.setButton("Delete", event -> deleteAlbum(album));   
                 }
             );
+            albumStack.setOnMouseExited(
+                mouseEvent -> {
+                    albumStack.getScene().setCursor(Cursor.DEFAULT);
+                    albumThumbnail.removeButtons();
+                }
+            );
             albumStack.setOnMouseClicked(
                 e -> {
                     try {

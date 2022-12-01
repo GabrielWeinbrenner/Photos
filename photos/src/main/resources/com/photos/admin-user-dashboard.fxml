@@ -33,7 +33,7 @@
             <TextField fx:id="passwordTextField" layoutX="341.0" layoutY="400.0" />
             <Label layoutX="154.0" layoutY="385.0" text="Username" />
             <Label layoutX="343.0" layoutY="385.0" prefHeight="17.0" prefWidth="81.0" text="Password" />
-            <Button fx:id="createUserButton1" layoutX="701.0" layoutY="393.0" mnemonicParsing="false" onAction="#deleteUserAction" prefHeight="41.0" prefWidth="159.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Delete User">
+            <Button fx:id="deleteUserButton" layoutX="701.0" layoutY="393.0" mnemonicParsing="false" onAction="#deleteUserAction" prefHeight="41.0" prefWidth="159.0" style="-fx-background-color: #DDDDDD; -fx-font-family: futura; -fx-font-size: 20;" text="Delete User">
                <font>
                   <Font size="20.0" />
                </font>

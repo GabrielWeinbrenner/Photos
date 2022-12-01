@@ -89,15 +89,20 @@ public class SearchDashboardController implements CreationEventListener {
     @FXML
     private void makeAlbumAction() {
         AlbumFormController afc = new AlbumFormController();
-        Album newAlbum = currentUser.createAlbum("");
-        for(Photo photo : photos) {
-            newAlbum.addPhoto(photo);
-        }
-        afc.setAddAlbum(this);
+        Album newAlbum;
         try {
-            App.setPopup("album-form", afc, newAlbum, 320);
-        } catch (IOException e) {
-            e.printStackTrace();
+            newAlbum = currentUser.createAlbum("");
+            for(Photo photo : photos) {
+                newAlbum.addPhoto(photo);
+            }
+            afc.setAddAlbum(this);
+            try {
+                App.setPopup("album-form", afc, newAlbum, 320);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e1) {
+            e1.printStackTrace();
         }
 
     }

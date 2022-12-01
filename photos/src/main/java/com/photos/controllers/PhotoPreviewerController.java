@@ -118,7 +118,14 @@ public class PhotoPreviewerController extends Controller implements CreationEven
         App.setPopup("photo-form", pfc, currPhoto, constants.FORM_HEIGHT);
         
     }
+    @FXML 
+    private void moveAction() throws IOException {
+        MovePhotoFormController mpfc = new MovePhotoFormController();
+        // mpfc.setAddPhoto(this);
+        App.setPopup("move-photo-form", mpfc, currPhoto, currAlbum, 320);
 
+
+    }
     @Override
     public void setData(Object... args) {
         for(int i = 0; i < args.length; i++){
@@ -130,6 +137,7 @@ public class PhotoPreviewerController extends Controller implements CreationEven
             }
         }
     }
+
     @Override
     public void onMagicPhoto() {
         this.captionText.setText(currPhoto.getCaption());

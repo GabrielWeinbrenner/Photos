@@ -67,7 +67,7 @@ public class AlbumFormController extends Controller {
     }
 
     @FXML
-    private void magicAlbumAction() throws Exception {
+    private void magicAlbumAction() {
         Alert errorAlert = new Alert(AlertType.ERROR);
         if(albumNameInput.getText() == null) {
             errorAlert.setHeaderText("No Album Title provided ");
@@ -78,9 +78,14 @@ public class AlbumFormController extends Controller {
             App.closePopup();
         } else {
             EndUser currentUser =  (EndUser) PSInstance.getCurrentUser();
-            currentUser.createAlbum(albumNameInput.getText());
-            listener.onMagicAlbum();
-            App.closePopup();
+            try {
+                currentUser.createAlbum(albumNameInput.getText());
+                listener.onMagicAlbum();
+                App.closePopup();
+            } catch (Exception e) {
+                errorAlert.setHeaderText("Name already exists");
+                errorAlert.showAndWait();
+            }
         }
     }
 }

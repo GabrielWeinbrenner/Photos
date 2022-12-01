@@ -85,4 +85,8 @@ public class Photo implements Serializable{
         this.dateCreated = imageDate;
         this.tags = tags;
     }
+
+    public void removeTag(Tag tag) {
+        this.tags.remove(tag);
+    }
 }
